@@ -149,7 +149,7 @@ var tokens = []
 var userlinks = []
 var users = []
 var request = new XMLHttpRequest();
-request.open('GET', 'https://yiaytokenleaderboard.com/leaderboard.txt', true);
+request.open('GET', '/leaderboard.txt', true);
 request.send(null);
 request.onreadystatechange = function () {
   if (request.readyState === 4 && request.status === 200) {
