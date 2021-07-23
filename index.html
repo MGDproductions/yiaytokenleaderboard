@@ -1,0 +1,232 @@
+<!-- sup gamer -->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <title>Yiay token leaderboard</title>
+
+  <meta name="description" content="The vault for the tokens that the overlord distributes.">
+
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+  <link
+      rel="shortcut icon"
+      href="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fyiaytoken.png?v=1627048783539"
+      type="image/x-icon"
+    />
+  <meta property="og:image" content="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fyiaytoken.png?v=1627048783539"/>
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+
+<style>
+  @font-face {
+  font-family: "Cooper Black";
+  src: url("https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2FCooperBlack.otf?v=1627042743268");
+  }
+  body {text-align: center; background-color:black; color:white; font-size:1.3rem; font-family:"Cooper Black", serif;}
+  a {color:blue; text-decoration:none;}
+  div {justify-content: center;}
+  .strokeme
+  { 
+    color: white;
+    text-shadow: 0 0 10px black, 0 0 10px black, 0 0 10px black, 0 0 10px black;
+    font-family: "Cooper Black", serif;
+  }
+  .headerimg{
+    justify-content: center;
+  }
+  .leaderboardentry{
+    width:70%; padding-top:4px; padding-bottom:4px; margin: auto; margin-bottom: 5px;
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+</style>
+
+<body id="body">
+<image src="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fleaderboardheader.png?v=1627051311423" height="100"></image>
+<br>
+<div id="leaderboard">
+<p class="strokeme">
+  Loading leaderboard...
+  </p>
+</div>
+<div id="footer" style="display:none;">
+<p class="strokeme">Credits to @TokenYiay <image src="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303" height="25" style="cursor: pointer;" onclick="redirect('https://twitter.com/TokenYiay')"></image> </p>
+<p class="strokeme">Site built by @MarcelD505 <image src="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303" height="25" style="cursor: pointer;" onclick="redirect('https://twitter.com/MarcelD505')"></image> <image id="webicon" src="https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fweb-icon.png?v=1627032132303" height="25" style="cursor: pointer;" onclick="redirect('https://www.mdproductions.nl/en/')"></image></p>
+<br>
+<label class="switch">
+  <input id="lightswitch" type="checkbox" onclick="togglelightswitch()">
+  <span class="slider round"></span>
+</label>
+<p style="display:inline;" class="strokeme">Light switch (ew)</p>
+</div>
+</body>
+
+<script>
+window.onerror = function error(error, url){
+  var request = new XMLHttpRequest();
+  request.open("POST", "https://discord.com/api/webhooks/865630791056228402/mynWCoGvN0SAKqLOR35GB3BnGBQYZXq9gHhuIngif45tU3zxtgFHzEc69qrsCGcY8P4D");
+  request.setRequestHeader('Content-type', 'application/json');
+
+  var myEmbed = {
+    title: "yiay error",
+    description: "Error: " + error,
+    color: hexToDecimal("#ff0000")
+  }
+
+  var params = {
+    username: "yiay error",
+    embeds: [ myEmbed ],
+    content: "<@416525692772286464>"
+  }
+
+  request.send(JSON.stringify(params));
+  function hexToDecimal(hex) {
+    return parseInt(hex.replace("#",""), 16)
+  }
+  document.getElementById('leaderboard').innerHTML = "<p>Couldn't load leaderboard. Try at a later time.</p>";
+}
+  
+var tokens = []
+var userlinks = []
+var users = []
+var request = new XMLHttpRequest();
+request.open('GET', 'https://yiaytokenleaderboard.com/leaderboard.txt', true);
+request.send(null);
+request.onreadystatechange = function () {
+  if (request.readyState === 4 && request.status === 200) {
+    var type = request.getResponseHeader('Content-Type');
+    if (type.indexOf("text") !== 1) {
+        var allstatus = request.responseText
+        var lines = allstatus.split("\n");
+        lines.forEach(function (arrayItem) {
+        var x = arrayItem.toString();
+        var coins = x.split('::')[0]
+        var user = x.split('::')[1]
+        var userlink = x.split('::')[2]
+        if (userlink.toLowerCase() === "twitter"){
+          userlink = "https://twitter.com/" + user
+        }
+        if (userlink.toLowerCase() === "tiktok"){
+          userlink = "https://www.tiktok.com/" + user
+        }
+        if (userlink.toLowerCase() === "reddit"){
+          userlink = "https://www.reddit.com/user/" + user.split('@').join('')
+        }
+        tokens.push(coins)
+        users.push(user)
+        userlinks.push(userlink)
+        });
+    }
+    var leaderboardhtml = ''
+
+    for (var i = 0; i < tokens.length; i++) {
+      if (Number(tokens[i].split(',').join('')) > 0){
+        entrycolor = "rgba(0, 188, 30, .8)"
+      }
+      else{
+        entrycolor = "rgba(255, 0, 0, .8)"
+      }
+      if (userlinks[i].includes("https://twitter.com")){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+      }
+      else if (userlinks[i].includes("https://www.tiktok.com")){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+      }
+      else if (userlinks[i].includes("https://www.youtube.com")){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+      }
+      else if (userlinks[i].toLowerCase().includes("youtube")){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
+      }
+      else if (userlinks[i].includes("https://www.reddit.com")){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>";
+      }
+      else{
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + '</p></div>';
+      }
+    }
+    document.getElementById('leaderboard').innerHTML = leaderboardhtml;
+    document.getElementById('footer').setAttribute("style", "");
+  }
+} 
+function redirect(link){
+  window.open(link)
+}
+function togglelightswitch(){
+  if (localStorage.getItem("lightswitch") === "on"){
+    document.getElementById('body').setAttribute("style", "transition: all .4s ease; text-align: center; background-color:black; color:white; font-size:1.3rem; font-family:'Cooper Black', serif;");
+    document.getElementById('webicon').setAttribute("src", "https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fweb-icon.png?v=1627050796905")
+    localStorage.setItem("lightswitch", "off")
+  }
+  else{
+    document.getElementById('body').setAttribute("style", "transition: all .4s ease; text-align: center; background-color:white; color:white; font-size:1.3rem; font-family:'Cooper Black', serif;");
+    document.getElementById('webicon').setAttribute("src", "https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fweb-icon-invert.png?v=1627050796905")
+    localStorage.setItem("lightswitch", "on")
+  }
+}
+if (localStorage.getItem("lightswitch") === "on"){
+  document.getElementById('lightswitch').checked = true;
+  document.getElementById('webicon').setAttribute("src", "https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fweb-icon-invert.png?v=1627050796905")
+  document.getElementById('body').setAttribute("style", "transition: all .4s ease; text-align: center; background-color:white; color:white; font-size:1.3rem; font-family:'Cooper Black', serif;");
+}
+</script>
+</html>
