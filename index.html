@@ -130,26 +130,6 @@
 
 <script>
 window.onerror = function error(error, url){
-  var request = new XMLHttpRequest();
-  request.open("POST", "https://discord.com/api/webhooks/865630791056228402/mynWCoGvN0SAKqLOR35GB3BnGBQYZXq9gHhuIngif45tU3zxtgFHzEc69qrsCGcY8P4D");
-  request.setRequestHeader('Content-type', 'application/json');
-
-  var myEmbed = {
-    title: "yiay error",
-    description: "Error: " + error,
-    color: hexToDecimal("#ff0000")
-  }
-
-  var params = {
-    username: "yiay error",
-    embeds: [ myEmbed ],
-    content: "<@416525692772286464>"
-  }
-
-  request.send(JSON.stringify(params));
-  function hexToDecimal(hex) {
-    return parseInt(hex.replace("#",""), 16)
-  }
   document.getElementById('leaderboard').innerHTML = "<p>Couldn't load leaderboard. Try at a later time.</p>";
 }
   
