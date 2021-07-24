@@ -10,8 +10,8 @@
 3::@gableism::Twitter
 3::@RobertR75038511::Twitter
 3::@Vigra Barnett::Youtube
-1::@TM970::Twitter
 1::@red56025724::Twitter
+1::@TM970::Twitter
 1::@xxlinus_s3x_tipsxx::Tiktok
 -50::@Chaxinitus::Twitter
 -67::@TheAverageGrunt::Twitter
