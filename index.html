@@ -151,7 +151,7 @@ request.onreadystatechange = function () {
         var user = x.split('::')[1]
         var userlink = x.split('::')[2]
         if (userlink.toLowerCase() === "twitter"){
-          userlink = "https://twitter.com/" + user
+          userlink = "https://twitter.com/" + user.split('@').join('')
         }
         if (userlink.toLowerCase() === "tiktok"){
           userlink = "https://www.tiktok.com/" + user
