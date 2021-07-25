@@ -202,10 +202,10 @@ request.onreadystatechange = function () {
       }
       else if (userlinks[i].toLowerCase().includes("youtube")){
         if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube channel link not availible' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";        
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube channel link not available' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";        
         }
         else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube channel link not availible' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube channel link not available' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
         }
       }
       else if (userlinks[i].includes("https://www.reddit.com")){
