@@ -136,6 +136,7 @@ window.onerror = function error(error, url){
 var tokens = []
 var userlinks = []
 var users = []
+var ytstamps = []
 var request = new XMLHttpRequest();
 request.open('GET', '/leaderboard.txt', true);
 request.send(null);
@@ -150,6 +151,7 @@ request.onreadystatechange = function () {
         var coins = x.split('::')[0]
         var user = x.split('::')[1]
         var userlink = x.split('::')[2]
+        var youtubetimestamp = x.split('::')[3]
         if (userlink.toLowerCase() === "twitter"){
           userlink = "https://twitter.com/" + user.split('@').join('')
         }
@@ -162,6 +164,7 @@ request.onreadystatechange = function () {
         tokens.push(coins)
         users.push(user)
         userlinks.push(userlink)
+        ytstamps.push(youtubetimestamp)
         });
     }
     var leaderboardhtml = ''
@@ -174,22 +177,52 @@ request.onreadystatechange = function () {
         entrycolor = "rgba(255, 0, 0, .8)"
       }
       if (userlinks[i].includes("https://twitter.com")){
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        }
       }
       else if (userlinks[i].includes("https://www.tiktok.com")){
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        }
       }
       else if (userlinks[i].includes("https://www.youtube.com")){
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        }
       }
       else if (userlinks[i].toLowerCase().includes("youtube")){
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image><image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";        
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
+        }
       }
       else if (userlinks[i].includes("https://www.reddit.com")){
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>";
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
+        }
       }
       else{
-        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + '</p></div>';
+        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + "<image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";
+        }
+        else{
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + '</p></div>';
+        }
       }
     }
     document.getElementById('leaderboard').innerHTML = leaderboardhtml;
