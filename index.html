@@ -179,6 +179,10 @@ request.onreadystatechange = function () {
       if (Number(tokens[i].split(',').join('')) > 0){
         entrycolor = "rgba(0, 188, 30, .8)"
       }
+      else if(tokens[i].includes("green")){
+        tokens[i] = tokens[i].replace("green", "")
+        entrycolor = "rgba(0, 188, 30, .8)"
+      }
       else{
         entrycolor = "rgba(255, 0, 0, .8)"
       }
