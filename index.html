@@ -137,6 +137,27 @@
 <script>
 window.onerror = function error(error, url){
   document.getElementById('leaderboard').innerHTML = "<p>Couldn't load leaderboard. Try at a later time.</p>";
+  var error = error
+  var request = new XMLHttpRequest();
+  request.open("POST", "https://discord.com/api/webhooks/873206512569430156/Mb7QZHhYIDYYAgjGUy3D8ps6zCQvgAKOA-30PqdSLXjehNIiNbAiwJp9aCug_bNkjuIH");
+  request.setRequestHeader('Content-type', 'application/json');
+
+  var myEmbed = {
+    title: "Yiay error",
+    description: "Error: " + error,
+    color: hexToDecimal("#ff0000")
+  }
+
+  var params = {
+    username: "yiay error",
+    embeds: [ myEmbed ],
+    content: "<@416525692772286464>"
+  }
+
+  request.send(JSON.stringify(params));
+  function hexToDecimal(hex) {
+    return parseInt(hex.replace("#",""), 16)
+  }
 }
   
 var tokens = []
