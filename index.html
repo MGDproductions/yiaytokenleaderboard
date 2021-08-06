@@ -137,27 +137,6 @@
 <script>
 window.onerror = function error(error, url){
   document.getElementById('leaderboard').innerHTML = "<p>Couldn't load leaderboard. Try at a later time.</p>";
-  var error = error
-  var request = new XMLHttpRequest();
-  request.open("POST", "https://discord.com/api/webhooks/873206512569430156/Mb7QZHhYIDYYAgjGUy3D8ps6zCQvgAKOA-30PqdSLXjehNIiNbAiwJp9aCug_bNkjuIH");
-  request.setRequestHeader('Content-type', 'application/json');
-
-  var myEmbed = {
-    title: "Yiay error",
-    description: "Error: " + error,
-    color: hexToDecimal("#ff0000")
-  }
-
-  var params = {
-    username: "yiay error",
-    embeds: [ myEmbed ],
-    content: "<@416525692772286464>"
-  }
-
-  request.send(JSON.stringify(params));
-  function hexToDecimal(hex) {
-    return parseInt(hex.replace("#",""), 16)
-  }
 }
   
 var tokens = []
@@ -209,7 +188,7 @@ request.onreadystatechange = function () {
       }
       if (userlinks[i].includes("https://twitter.com")){
         if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderbeoardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter profile link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
+          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter profile link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
         }
         else{
           leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter profile link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
