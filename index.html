@@ -135,8 +135,29 @@
 </body>
 
 <script>
-window.onerror = function error(error, url){
-  document.getElementById('leaderboard').innerHTML = "<p>Couldn't load leaderboard. Try at a later time.</p>";
+window.onerror = function error(error, url, linenumber){
+  document.getElementById('leaderboard').innerHTML = "<p class='strokeme'>Couldn't load leaderboard. Try at a later time.</p>";
+  /*var error = error
+  var request = new XMLHttpRequest();
+  request.open("POST", "discord error log url");
+  request.setRequestHeader('Content-type', 'application/json');
+
+  var myEmbed = {
+    title: "yiay error",
+    description: "Error: " + error + linenumber,
+    color: hexToDecimal("#ff0000")
+  }
+
+  var params = {
+    username: "yiay error",
+    embeds: [ myEmbed ],
+    content: "<@416525692772286464>"
+  }
+
+  request.send(JSON.stringify(params));
+  function hexToDecimal(hex) {
+    return parseInt(hex.replace("#",""), 16)
+  }*/
 }
   
 var tokens = []
