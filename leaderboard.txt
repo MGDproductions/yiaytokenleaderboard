@@ -6,7 +6,7 @@
 1,000,000::@PartyingGamerGuy::https://www.youtube.com/watch?v=KZPGv2R6MU0::https://clips.twitch.tv/AwkwardAssiduousGoblinFeelsBadMan-PtqnDmYI8sXxx0sb
 1,000,000::@Smith_lord13::https://twitter.com/Smith_Lord13/status/1398371653453746178?s=20::https://youtu.be/41Gp6F2ykyo?t=296
 10,000::@smoov22_sonic::https://twitter.com/smoov22_sonic/status/1392554115130171392?s=20::https://youtu.be/aosfzrudYgo?t=531
-1,000::@C::https://www.youtube.com/channel/UC3CJPqx6N-h_rELXD6qK5_A::https://youtu.be/aosfzrudYgo?t=134
+1,000::@C::https://www.youtube.com/channel/UCPcFg7aBbaVzXoIKSNqwaww/community?lc=Ugz7JLn-4WfK9gNNNpF4AaABAg&lb=UgwmHgW1msu0wn2xJOd4AaABCQ::https://youtu.be/aosfzrudYgo?t=134
 1,000::@EZGames69::https://twitter.com/EZGames69/status/1415808931520188420::https://youtu.be/bCGYRuxR6H8?t=178
 420::@ericathesuckup::https://twitter.com/ericathesuckup/status/1400525314036543491?s=20::https://youtu.be/lvjAT7pE8lc?t=210
 300::@INNERLMNT::https://www.youtube.com/watch?v=NjnEf6YBrAY::https://clips.twitch.tv/RoughNaivePeppermintPoooound-qZ7Xh8Uh3ie4ehul
@@ -20,7 +20,7 @@
 3::@gableism::https://twitter.com/Gableism/status/1407105353637109763?s=20::https://youtu.be/YdPFEObGrOU?t=86
 3::@Light::https://www.youtube.com/watch?v=PvzT76581Q0::https://clips.twitch.tv/EagerDarkBatWOOP-9BkglCuM62TPOUcK
 3::@onecrazy_bacon::https://twitter.com/onecrazy_bacon/status/1402038021701070849?s=20::https://youtu.be/NDWrjlDImkg?t=162
-3::@Vigra Barnett::https://www.youtube.com/channel/UCpCO5wceu5lhUEN5O5Py0Dw::https://youtu.be/vANPekD_E8E?t=42
+3::@Vigra Barnett::https://www.youtube.com/channel/UCPcFg7aBbaVzXoIKSNqwaww/community?lc=UgyDMkjh5BUtbR45vf94AaABAg&lb=UgyPu5_NBg_-3C8jXG94AaABCQ::https://youtu.be/vANPekD_E8E?t=42
 2::@Rainbo::https://www.youtube.com/watch?v=gyxNBzWtcnY::https://clips.twitch.tv/InspiringBashfulFlyCmonBruh-U-7Kl1DA1Dc-dKaK
 2::@yaoch::https://www.youtube.com/watch?v=DTXEnpjbykI::https://clips.twitch.tv/LightSpunkyCroissantRickroll-QiK9iEcf1UQ3dtCI
 1::@red56025724::Twitter::https://youtu.be/-iB1r6swwxs?t=18
