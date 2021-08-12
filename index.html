@@ -161,6 +161,7 @@ var tokens = []
 var userlinks = []
 var users = []
 var ytstamps = []
+var secytstamps = []
 var request = new XMLHttpRequest();
 request.open('GET', '/leaderboard.txt', true);
 request.send(null);
@@ -176,6 +177,13 @@ request.onreadystatechange = function () {
         var user = x.split('::')[1]
         var userlink = x.split('::')[2]
         var youtubetimestamp = x.split('::')[3]
+        if (x.split('::')[4] !== undefined){
+          var secyoutubetimestamp = x.split('::')[4]
+          secytstamps.push(secyoutubetimestamp)
+        }
+        else{
+          secytstamps.push('null')
+        }
         if (userlink.toLowerCase() === "twitter"){
           userlink = "https://twitter.com/" + user.split('@').join('')
         }
@@ -192,6 +200,7 @@ request.onreadystatechange = function () {
         });
     }
     var leaderboardhtml = ''
+    var timestamphtml = ''
 
     for (var i = 0; i < tokens.length; i++) {
       if (Number(tokens[i].split(',').join('')) > 0){
@@ -204,53 +213,29 @@ request.onreadystatechange = function () {
       else{
         entrycolor = "rgba(255, 0, 0, .8)"
       }
+      if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
+        timestamphtml = "<image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image>"
+      }
+      if (secytstamps[i] !== undefined && secytstamps[i].includes("https://")){
+        timestamphtml += "<image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + secytstamps[i] + "')></image>"
+      }
       if (userlinks[i].includes("https://twitter.com")){
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='twitter link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-twitter.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</p></div>"
       }
       else if (userlinks[i].includes("https://www.tiktok.com")){
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='tiktok link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='tiktok link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='tiktok link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-tiktok.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</p></div>"
       }
       else if (userlinks[i].includes("https://www.youtube.com")){
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</p></div>"
       }
       else if (userlinks[i].toLowerCase().includes("youtube")){
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link not available' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";        
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link not available' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image></p></div>";
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='youtube link not available' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Flogo-youtube.png?v=1627032132303' height='25'></image>" + timestamphtml + "</p></div>"
       }
       else if (userlinks[i].includes("https://www.reddit.com")){
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='reddit link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image><image title='when did it happen?' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>"
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='reddit link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image></p></div>"
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='reddit link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</p></div>"
       }
       else{
-        if (ytstamps[i] !== undefined && ytstamps[i].includes("https://")){
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + "<image src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Fclock-icon.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + ytstamps[i] + "')></image></p></div>";
-        }
-        else{
-          leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + '</p></div>';
-        }
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + timestamphtml + "</p></div>";
       }
     }
     document.getElementById('leaderboard').innerHTML = leaderboardhtml;
