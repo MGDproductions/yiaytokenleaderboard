@@ -47,7 +47,7 @@ request.onreadystatechange = function () {
     }
     var leaderboardhtml = ''
     var timestamphtml = ''
-
+    var entrycolor = "rgba(255, 0, 0, .8)"
     for (var i = 0; i < tokens.length; i++) {
       if (Number(tokens[i].split(',').join('')) > 0){
         entrycolor = "rgba(0, 188, 30, .8)"
@@ -79,6 +79,9 @@ request.onreadystatechange = function () {
       }
       else if (userlinks[i].includes("https://www.reddit.com")){
         leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " <image title='reddit link' src='https://cdn.glitch.com/8f973a1b-80be-4cc1-bc2e-cba7259fd18d%2Freddit.png?v=1627032132303' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</p></div>"
+      }
+      else if (userlinks[i] === "none"){
+        leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " " + timestamphtml + "</p></div>"
       }
       else{
         leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + " (" + userlinks[i] + ")" + timestamphtml + "</p></div>";
