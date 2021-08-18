@@ -18,6 +18,7 @@
 69 ½ green::@gmaildotcom0::https://twitter.com/gmaildotcom0/status/1420356103154528261::https://youtu.be/I1rSoOIP-jw?t=276
 69::@thatsprettycoo6::https://twitter.com/Thatsprettycoo6/status/1407109112098398214?s=20::https://youtu.be/YdPFEObGrOU?t=155
 10::@bigsatodontcrai::https://twitter.com/bigsatodontcrai/status/1407784261852278789::https://youtu.be/8jBHLmBmyA4?t=269
+10::@raplications::https://twitter.com/raplications/status/1424981274611970050::https://youtu.be/060Tw5UY_VQ?t=218
 10::@thatsmamaluigi3::https://twitter.com/ThatsmamaLuigi3/status/1398407187798626309?s=20::https://youtu.be/41Gp6F2ykyo?t=326
 4::@Raccoon Toes::https://www.youtube.com/watch?v=vHnZRjLTwXA::https://clips.twitch.tv/TangentialAssiduousButterLitty-M61AVlpf8C4UDhqH
 3::@gableism::https://twitter.com/Gableism/status/1407105353637109763?s=20::https://youtu.be/YdPFEObGrOU?t=86
@@ -34,6 +35,7 @@
 -3::@just Jules::https://www.youtube.com/channel/UCPcFg7aBbaVzXoIKSNqwaww/community?lc=Ugy7NGifw-yCZc7XLtt4AaABAg&lb=UgyFQGmd2IGV0t0LzmF4AaABCQ::https://youtu.be/JC083abgY1w?t=303
 -3::@VforVoinis::https://twitter.com/VforVoinis/status/1410349548048891916::https://www.youtube.com/watch?v=jMpeSFM7VBg&t=599s
 -10::@AnnaValdezArt::https://twitter.com/AnnaValdezArt/status/1420183088655650819::https://youtu.be/I1rSoOIP-jw?t=128
+-10::@DankeyKangCntry::https://twitter.com/DankeyKangCntry/status/1425217596895285249::https://youtu.be/060Tw5UY_VQ?t=218
 -27::The creative council::none::https://youtu.be/sJBq6RiA0ao?t=324
 -50::@Chaxinitus::https://twitter.com/Chaxinitus/status/1401999574080835590?s=20::https://youtu.be/NDWrjlDImkg?t=219
 -67::@TheAverageGrunt::https://twitter.com/TheAverageGrunt/status/1402354109819273222?s=20::https://youtu.be/kpnWWF6NKS8?t=338
