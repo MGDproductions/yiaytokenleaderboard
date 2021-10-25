@@ -17,6 +17,7 @@ var userlinks = []
 var users = []
 var ytstamps = []
 var secytstamps = []
+var thirdytstamps = []
 var lightmode = false
 var lightstorage = true
 var request = new XMLHttpRequest();
@@ -40,6 +41,13 @@ request.onreadystatechange = function () {
         }
         else{
           secytstamps.push('null')
+        }
+        if (x.split('::')[5] !== undefined){
+          var thirdyoutubetimestamp = x.split('::')[4]
+          thirdytstamps.push(thirdyoutubetimestamp)
+        }
+        else{
+          thirdytstamps.push('null')
         }
         if (userlink.toLowerCase() === "twitter"){
           userlink = "https://twitter.com/" + user.split('@').join('')
@@ -75,6 +83,9 @@ request.onreadystatechange = function () {
       }
       if (secytstamps[i] !== undefined && secytstamps[i].includes("https://")){
         timestamphtml += "<image title='when did it happen?' src='https://yiaytokenleaderboard.com/img/clockicon.png' height='25' style='cursor: pointer;' onclick=redirect('" + secytstamps[i] + "')></image>"
+      }
+      if (thirdytstamps[i] !== undefined && thirdytstamps[i].includes("https://")){
+        timestamphtml += "<image title='when did it happen?' src='https://yiaytokenleaderboard.com/img/clockicon.png' height='25' style='cursor: pointer;' onclick=redirect('" + thirdytstamps[i] + "')></image>"
       }
       if (userlinks[i].includes("https://twitter.com")){
         leaderboardhtml += "<div class='leaderboardentry' style='background:" + entrycolor + "'> <p class='strokeme'> " + tokens[i] + " " + users[i] + "<span class='images'> <image title='twitter link' src='https://yiaytokenleaderboard.com/img/logo-twitter.png' height='25' style='cursor: pointer;' onclick=redirect('" + userlinks[i] + "')></image>" + timestamphtml + "</span></p></div>"
