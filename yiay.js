@@ -43,7 +43,7 @@ request.onreadystatechange = function () {
           secytstamps.push('null')
         }
         if (x.split('::')[5] !== undefined){
-          var thirdyoutubetimestamp = x.split('::')[4]
+          var thirdyoutubetimestamp = x.split('::')[5]
           thirdytstamps.push(thirdyoutubetimestamp)
         }
         else{
