@@ -31,6 +31,7 @@ request.onreadystatechange = function () {
         var lines = allstatus.split("\n");
         lines.forEach(function (arrayItem) {
         var x = arrayItem.toString();
+        console.log(x)
         var coins = x.split('::')[0]
         var user = x.split('::')[1]
         var userlink = x.split('::')[2]
